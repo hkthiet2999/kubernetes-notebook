@@ -25,11 +25,11 @@ tạo, chạy một container từ image với id (name) là image_id
 
 ### Một số tham số thêm vào khi tạo container:
 
-`-v path-in-host:path-in-container`
-Ánh xạ thư mục máy host vào container
+docker run -it `-v path-in-host:path-in-container`
+Ánh xạ thư mục máy host vào container ( path có dấu /)
 
-`--volumes-from other-container-name`
-Nhận chia sẻ thư mục đã ánh xạ từ container khác
+docker run -it --name nameyourcontainer `--volumes-from other-container-name imagename`
+Chia sẻ thư mục đã ánh xạ từ 1 container khác 
 
 `-p public-port:target-port`
 Container có cổng ngoài public-port ánh xạ vào cổng trong target-port
