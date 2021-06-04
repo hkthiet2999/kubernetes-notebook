@@ -92,6 +92,8 @@ Tạo ổ đĩa ánh xạ đến thư mục của máy host
 Liệt kê các network
 `docker network ls`
 
+Có 3 network mặc định: bridge, host, null
+
 Tạo mạng kiểu bridge đặt tên là name-network
 `docker network create --driver bridge name-network`
 
