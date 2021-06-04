@@ -17,12 +17,13 @@ Liệt kê các container
 
 `docker container ls -a`
 Liệt kê các container
-Tạo / chạy container
+
+# Tạo / chạy container
 
 `docker run -it --name nameyourcontainer -h "nameyourhost" image_id`
 tạo, chạy một container từ image với id (name) là image_id
 
-# Một số tham số thêm vào khi tạo container:
+### Một số tham số thêm vào khi tạo container:
 
 `-v path-in-host:path-in-container`
 Ánh xạ thư mục máy host vào container
