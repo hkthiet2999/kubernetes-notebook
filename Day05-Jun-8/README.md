@@ -1,40 +1,36 @@
-Launch Single Node Kubernetes Cluster
+# Launch Single Node Kubernetes Cluster
 
-Step 1 - Start Minikube
-Minikube has been installed and configured in the environment. Check that it is properly installed, by running the minikube version command:
+## Step 1 - Khởi động Minikube
+Cài đặt dựa trên hướng dẫn của [minikube](https://minikube.sigs.k8s.io/docs/start/). Do máy mình không đủ dung lượng ổ cứng để cài minikube cùng với các VM tools nên sẽ thực hành trên katacoda.
 
-minikube version
+- Kiểm tra xem Minikube đã được cài đặt đúng cách chưa bằng cách chạy lệnh kiểm tra phiên bản minikube: `minikube version`
 
-Start the cluster, by running the minikube start command:
+- Khởi động cluster bằng cách chạy lệnh minikube start: `minikube start --wait=false`
 
-minikube start --wait=false
-
-Great! You now have a running Kubernetes cluster in your online terminal. Minikube started a virtual machine for you, and a Kubernetes cluster is now running in that VM.
+Kubernetes cluster đang chạy trên terminal. Minikube đã khởi động một máy ảo và một Kubernetes Cluster hiện đang chạy trong máy ảo đó.
 
 
-Step 2 - Cluster Info
-The cluster can be interacted with using the kubectl CLI. This is the main approach used for managing Kubernetes and the applications running on top of the cluster.
+## Step 2 - Xem thông tin Kubernetes Cluster
+Ta có thể tương tác với Kubernetes Cluster bằng cách sử dụng kubectl CLI. Đây là cách tiếp cận chính được sử dụng để quản lý Kubernetes và các ứng dụng chạy trên cùng Kubernetes Cluster. 
 
-Details of the cluster and its health status can be discovered via `kubectl cluster-info`
+- Để xem thông tin chi tiết của Kubernetes Cluster, ta chạy lệnh: `kubectl cluster-info`
 
-To view the nodes in the cluster using `kubectl get nodes`
+- Để xem thông tin tất cả các node trong cluster:  `kubectl get nodes`
 
-If the node is marked as NotReady then it is still starting the components.
+Nếu nút được đánh dấu là NotReady thì nó vẫn đang khởi động các components.
 
-This command shows all nodes that can be used to host our applications. Now we have only one node, and we can see that it’s status is ready (it is ready to accept applications for deployment).
+## Step 3 - Deploy Containers
+Khi một Kubernetes cluster đang chạy, các containers trong đó có thể deploy bằng cách sử dụng câu lệnh kubectl run như sau: `kubectl create deployment first-deployment --image=katacoda/docker-http-server`
 
-Step 3 - Deploy Containers
-With a running Kubernetes cluster, containers can now be deployed.
+Câu lệnh trên khởi động một deployment có các containers dựa trên image katacoda/docker-http-server.
 
-Using kubectl run, it allows containers to be deployed onto the cluster - kubectl create deployment first-deployment --image=katacoda/docker-http-server
+Để xxem trạng thái của các Pod ta sử dụng lệnh: `kubectl get pods`
 
-The status of the deployment can be discovered via the running Pods - kubectl get pods
+Khi một container đang chạy nó có thể được hiển thị thông qua các tùy chọn networks khác nhau tùy thuộc vào requirements. Ta có thể sử dụng NodePort để cung cấp một port cụ thể cho container bằng câu lệnh:
 
-Once the container is running it can be exposed via different networking options, depending on requirements. One possible solution is NodePort, that provides a dynamic port to a container.
+`kubectl expose deployment first-deployment --port=80 --type=NodePort`
 
-kubectl expose deployment first-deployment --port=80 --type=NodePort
-
-The command below finds the allocated port and executes a HTTP request.
+Lệnh bên dưới tìm port được cấp phát và thực hiện một HTTP request.
 
 `
 export PORT=$(kubectl get svc first-deployment -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
@@ -42,32 +38,21 @@ echo "Accessing host01:$PORT"
 curl host01:$PORT
 `
 
-The result is the container that processed the request. 
-<h1>This request was processed by host: first-deplotment-666c48b44-vfw8s<h1>
+Kết quả là container xử lý HTTP request và trả về một html với thẻ h1 như sau:
 
-Step 4 - Dashboard
-Enable the dashboard using Minikube with the command minikube addons enable dashboard
+`<h1>This request was processed by host: first-deplotment-666c48b44-vfw8s<h1>`
 
-Make the Kubernetes Dashboard available by deploying the following YAML definition. This should only be used on Katacoda.
+## Step 4 - Dashboard
 
-kubectl apply -f /opt/kubernetes-dashboard.yaml
+Khởi động Kubernetes Dashboard bằng Minikube với lệnh `minikube addons` Hoặc triển khai một file cấu hình YAML như sau.
 
-The Kubernetes dashboard allows you to view your applications in a UI. In this deployment, the dashboard has been made available on port 30000 but may take a while to start.
-
-To see the progress of the Dashboard starting, watch the Pods within the kube-system namespace using kubectl get pods -n kubernetes-dashboard -w
-
-Once running, the URL to the dashboard is https://2886795278-30000-ollie08.environments.katacoda.com/
-
-
-Step 4 - Dashboard
-Enable the dashboard using Minikube with the command minikube addons enable dashboard
-
-Make the Kubernetes Dashboard available by deploying the following YAML definition. This should only be used on Katacoda.
-
-kubectl apply -f /opt/kubernetes-dashboard.yaml
-
-The Kubernetes dashboard allows you to view your applications in a UI. In this deployment, the dashboard has been made available on port 30000 but may take a while to start.
-
-To see the progress of the Dashboard starting, watch the Pods within the kube-system namespace using kubectl get pods -n kubernetes-dashboard -w
-
-Once running, the URL to the dashboard is https://2886795278-30000-ollie08.environments.katacoda.com/
+`kubectl apply -f /opt/kubernetes-dashboard.yaml` ( chạy trên katacoda - cổng mặc đọnh là 30000)
+  
+Kubernetes dashboard cho phép ta xem các ứng dụng của mình qua UI. Để xem các pod đang chạy ta sử dụng lệnh:
+  `kubectl get pods -n kubernetes-dashboard -w`
+Sau khi chạy Kubernetes dashboard trên katacoda, URL đến trang dashboard là: https://2886795278-30000-ollie08.environments.katacoda.com/
+  
+ Dưới đây là giao diện dashboard với thông tin các pod đang chạy:
+  
+  
+   ![](images/kubedashboard.png)
