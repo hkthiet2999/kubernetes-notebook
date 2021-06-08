@@ -1,7 +1,6 @@
 # Deploy Containers using Kubectl
 
-Học cách sử dụng Kubectl để tạo và khởi chạy Deployments,  Replication Controllers ( ReplicaSet) và hiển thị chúng qua Services mà không cần viết định nghĩa yaml. 
-Điều này cho phép bạn nhanh chóng khởi chạy các containers vào Cluster.
+Học cách sử dụng Kubectl để tạo và khởi chạy Deployments,  Replication Controllers ( ReplicaSet) và hiển thị chúng qua Services mà không cần viết định nghĩa yaml. Điều này cho phép ta nhanh chóng khởi chạy các containers vào Cluster.
 
 ## Step 1 - Launch Cluster
 Bước đầu tiên chúng ta cần khởi chạy một Kubernetes cluster.
