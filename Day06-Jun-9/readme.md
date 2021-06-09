@@ -1,5 +1,7 @@
+Tổng hợp lý thuyết về các built-in workload resources từ [Documents của Kubernetes](https://kubernetes.io/docs/home/)
+
 # Workloads trong Kubernetes
-Workloads là một application chạy trên Kubernetes. Cho dù Workload là một thành phần đơn lẻ hay nhiều thành phần hoạt động cùng nhau, trên Kubernetes, bạn sẽ chạy nó bên trong một tập hợp các Pods.
+Workloads là một application chạy trên Kubernetes. Cho dù Workload là một thành phần đơn lẻ hay nhiều thành phần hoạt động cùng nhau thì trên Kubernetes đều sẽ chạy nó bên trong một tập hợp các Pods.
 
 Các Pods trong Kubernetes có một vòng đời xác định. Khi một Pod đang chạy trong Cluster xảy ra lỗi trên Node nơi Pod đó đang chạy dẫn đến tất cả các Pod trên Node đó đều bị lỗi.
 Khi đó ra sẽ cần tạo một Pod mới để khôi phục lại trạng thái ok ban đầu và vì vậy việc quản lý Pods là cực kỳ quan trọng.
