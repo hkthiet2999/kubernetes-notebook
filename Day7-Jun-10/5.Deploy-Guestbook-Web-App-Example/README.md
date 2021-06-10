@@ -1,34 +1,26 @@
 # Deploy Guestbook example on Kubernetes
+
 Bài tập này demo cho cách khởi chạy một ứng dụng web đa tầng, đơn giản bằng Kubernetes và Docker.
 Ứng dụng Guestbook này lưu trữ các ghi chú từ khách trong Redis thông qua các lệnh gọi API JavaScript. Redis chứa một master (để lưu trữ) và một tập hợp các redis slaves được sao chép.
 
+Ta sẽ lần lượt chạy các Controllers và Service phù hợp để triển khai ứng dụng Web Guestbook qua các bước sau:
+
 ## Step 1 - Start Kubernetes
 
-Để bắt đầu, chúng ta cần một Kubernetes Cluster đang chạy. Chi tiết về điều này được giải thích trong kịch bản cụm Launch Kubernetes.
+Để bắt đầu, chúng ta cần một Kubernetes Cluster đang chạy. Chi tiết về điều này được giải thích trong Launch Kubernetes qua lệnh `launch.sh`
+Ta bắt đầu một  single-node cluster bằng cách sử dụng các helper script. Tập lệnh helper script sẽ khởi chạy phát hiện API, Master, Proxy và DNS. 
+Ứng dụng Web Guestbook này sử dụng DNS Discovery để tìm Redis slave và lưu trữ dữ liệu.
 
-Bắt đầu một  single-node cluster bằng cách sử dụng các helper script. Tập lệnh helper script sẽ khởi chạy phát hiện API, Master, Proxy và DNS. 
-Ứng dụng Web sử dụng DNS Discovery để tìm Redis slave để lưu trữ dữ liệu.
-
-`launch.sh`
 
 ![](images/step01.png)
-
-Kiểm tra mọi thứ đã hoạt động bằng cách sử dụng Kiểm tra tình trạng sau: kubectl cluster-info kubectl nhận các nút Nếu nút trả về NotReady thì nó vẫn đang đợi. Chờ vài giây trước khi thử lại.
 
 ## Step 2 - Redis Master Controller
 
 Giai đoạn đầu tiên của việc khởi chạy ứng dụng là khởi động Redis Master. Việc triển khai dịch vụ Kubernetes có ít nhất hai phần. Một là replication controller và một service.
 
 Replication controller xác định có bao nhiêu phiên bản sẽ được chạy, Docker Image để sử dụng và tên để xác định Service. 
-Các tùy chọn bổ sung khác có thể được sử dụng để configuration and discovery. 
-
-
-Nếu Redis không hoạt động, bộ điều khiển sao chép sẽ khởi động lại nó trên một nút đang hoạt động.
-
-Trong ví dụ này, YAML xác định một máy chủ redis được gọi là redis-master bằng cách sử dụng cổng 6379 chính thức đang chạy redis. Lệnh tạo kubectl nhận định nghĩa YAML và hướng dẫn trình điều khiển khởi động Controller.
-`kubectl create -f redis-master-controller.yaml`
-
-![](images/step02-1.png)
+Các tùy chọn bổ sung khác có thể được sử dụng để configuration and discovery. Nếu Redis không hoạt động, bộ điều khiển sao chép sẽ khởi động lại nó trên một nút đang hoạt động. 
+Dưới đây là cấu hình yaml của ReplicationController Redis Master:
 
 ```
 apiVersion: v1
@@ -53,7 +45,10 @@ spec:
         - containerPort: 6379
 ```
 
-Có thể xem điều này bằng cách sử dụng kubectl, `kubectl get nodes` và `kubectl get pods` kết quả như sau:
+Trong ví dụ này, redis-master-controller.yaml xác định một máy chủ redis được gọi là redis-master bằng cách sử dụng cổng 6379 chính thức đang chạy redis. Lệnh tạo kubectl nhận định nghĩa YAML và hướng dẫn trình điều khiển khởi động Controller như sau: `kubectl create -f redis-master-controller.yaml`
+
+
+Ta có thể sử dụng kubectl, `kubectl get nodes` và `kubectl get pods` để xem kết quả như sau:
 
 
 ![](images/step02-2.png)
@@ -65,10 +60,9 @@ Phần thứ hai là một Service. Một Kubernetes Service là một bộ cân
 Service Proxy giao tiếp trong Cluster và hiếm khi để lộ các Ports ra giao diện bên ngoài.
 
 Thông thường khi khởi chạy một Service ta sẽ không thể kết nối bằng curl hoặc netcat nếu ta không khởi động nó như một phần của Kubernetes.
-Cách tiếp cận được khuyến nghị là có một LoadBalancer service để xử lý các giao tiếp bên ngoài.
+Cách tiếp cận mà bài thực hành này của katacoda là có một LoadBalancer service để xử lý các giao tiếp bên ngoài.
 
-`kubectl create -f redis-master-service.yaml`
-YAML xác định tên của replication controller, redis-master và các ports cần được ủy quyền:
+Chạy lệnh `kubectl create -f redis-master-service.yaml`, trong đó redis-master-service.yaml có cấu hình như dưới đây dùng để xác định tên của replication controller, redis-master và các ports cần được ủy quyền:
 
 ```
 apiVersion: v1
@@ -155,7 +149,7 @@ spec:
 
 ## Step 6 - Frontend Replicated Pods
 
-YAML xác định một service được gọi là frontend sử dụng Image _gcr.io/googlesamples/gb-frontend:v3. Replication controller sẽ đảm bảo rằng ba Pod sẽ luôn tồn tại.
+Cấu hình YAML bên dưới xác định một service được gọi là frontend sử dụng Image `_gcr.io/googlesamples/gb-frontend:v3`. Replication controller này sẽ đảm bảo rằng ba Pod sẽ luôn tồn tại.
 
 ```
 apiVersion: v1
@@ -192,7 +186,7 @@ spec:
 
 ## Step 7 - Guestbook Frontend Service
 
-YAML định nghĩa Service là một NodePort. NodePort cho phép bạn thiết lập các cổng nổi tiếng được chia sẻ trên toàn bộ Cluster của bạn.
+frontend-service.yaml định nghĩa Service là một NodePort. NodePort cho phép bạn thiết lập các cổng nổi tiếng được chia sẻ trên toàn bộ Cluster của bạn.
 
 Trong trường hợp này, chúng tôi xác định ứng dụng web của chúng tôi đang chạy trên cổng 80 nhưng chúng tôi sẽ hiển thị dịch vụ trên 30080.
 `kubectl create -f frontend-service.yaml`
