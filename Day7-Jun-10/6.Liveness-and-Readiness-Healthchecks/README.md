@@ -1,7 +1,8 @@
 # Liveness and Readiness Healthchecks
-https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+Lý thuyết về Liveness và Readiness tham khảo tại [kubernetes.io/docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+
 ## Step 1 - Launch Cluster
-Tương tự nhưu các bài lab trước đây, để bắt đầu chúng ta cần khởi chạy một Kubernetes Cluster. 
+Tương tự như các bài lab trước đây, để bắt đầu chúng ta cần khởi chạy một Kubernetes Cluster. 
 Thực hiện lệnh dưới đây để khởi động các thành phần Cluster và tải xuống Kubectl CLI:
 `launch.sh`, sau khi Cluster khởi động xong ta triển khai ứng dụng demo với `kubectl apply -f deploy.yaml`
 
@@ -181,6 +182,6 @@ Trong bài tập này, một HTTP server sẽ có một endpoint bổ sung trả
 kubectl exec $pod -- /usr/bin/curl -s localhost/unhealthy`
 
 Dựa trên cấu hình ở trên, Kubernetes sẽ thực hiện Liveness Probe. Nếu Probe không thành công, Kubernetes sẽ phá hủy và tạo lại Container bị lỗi. 
-Việc ta thực thi câu lệnh bên trên để làm sập service và Kubernetes sẽ tự động khôi phục nó. Để kiểm tra xem Pod có bị mất đi không, ta dùng lệnh `` và kết quả như sau:
+Việc ta thực thi câu lệnh bên trên để làm sập service và Kubernetes sẽ tự động khôi phục nó. Để kiểm tra xem Pod có bị mất đi không, ta dùng lệnh `kubectl get pods --selector="name=frontend"` và kết quả như sau:
 
 ![](images/step03.png)
