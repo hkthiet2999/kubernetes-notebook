@@ -25,4 +25,4 @@ USER appuser
 # File wsgi.py was not found in subfolder: 'hello_django'. Please enter the Python path to wsgi file.
 # CMD ["gunicorn", "--bind", "0.0.0.0:8000", "pythonPath.to.wsgi"]
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "web_project.wsgi"]
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "web_project.flask:app"]
+# CMD ["gunicorn", "--bind", "0.0.0.0:5000", "web_project.flask:app"]
