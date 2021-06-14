@@ -21,9 +21,12 @@ Ban đầu, một số service chẳng hạn như trình cung cấp bộ nhớ c
 
 ![](images/lab1_3.png)
 
-## Step 4 - Deploy Containers
+## Step 3 - Deploy Containers
 Tạo một Depoloyment và hiển thị nó trên Port 8080:
 `kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4` , sau đó chạy lệnh `kubectl expose deployment hello-minikube --type=NodePort --port=8080`
+
+
+## Step 4- Dashboard 
 Đợi xíu cho tới khi tạo deployment xong, ta sử dụng lệnh `kubectl get services hello-minikube
 ` để truy cập đến service để minikube tự khởi chạy ứng dụng trên trình duyệt mặc định:
 
@@ -52,8 +55,9 @@ Mở một cửa sổ mới và chạy câu lệnh `minikube tunel` để tạo 
 Ứng dụng bây giờ đang được triển khai dưới cổng ` <EXTERNAL-IP>:8080`
 
 
-## Manage your cluster
+##### Quản lý cluster
 
 Ta có thể dừng Kubernetes với câu lệnh `minikube stop` và sau đó xóa minikube cluster với câu lệnh `minikube delete`:
 
-
+## Nguồn tham khảo
+Thực hành dựa trên các bước của [Launch Single Node Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/Day05-Jun-8/1.Launch-Single-Node-Kubernetes-Cluster) và hướng dẫn của [minikube start](https://minikube.sigs.k8s.io/docs/start/) và [Hello minikube](https://kubernetes.io/docs/tutorials/hello-minikube/)
