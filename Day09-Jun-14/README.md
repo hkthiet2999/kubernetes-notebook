@@ -1,7 +1,5 @@
-# Thực hành trên máy  local
-
-# Lab 1: Launch Single Node Kubernetes Cluster - minikube start
-### Step 1, 2: Khởi động Minikube và Xem thông tin Kubernetes Cluster
+# Launch Single Node Kubernetes Cluster - minikube start
+## Step 1, 2: Khởi động Minikube và Xem thông tin Kubernetes Cluster
 
 Cài đặt dựa trên hướng dẫn của minikube.
 
@@ -15,20 +13,47 @@ Ta có thể tương tác với Kubernetes Cluster bằng cách sử dụng kube
 
 ![](images/lab1_1.png)
 
-### Step 3: Interact with your cluster
-If you already have kubectl installed, you can now use it to access your shiny new cluster.
-
-`kubectl get po -A`. Kết quả như sau:
+Truy cập tới Cluster vừa tạo: `kubectl get po -A`. Kết quả như sau:
 
 ![](images/lab1_2.png)
 
-Ban đầu, một số dịch vụ chẳng hạn như trình cung cấp bộ nhớ, có thể chưa ở trạng thái Đang chạy. Đây là tình trạng bình thường trong quá trình khởi động cụm và sẽ tự giải quyết trong giây lát. Để có thêm thông tin chi tiết về trạng thái cụm của bạn, minikube đóng gói Bảng điều khiển Kubernetes, cho phép bạn dễ dàng làm quen với môi trường mới của mình:
+Ban đầu, một số service chẳng hạn như trình cung cấp bộ nhớ có thể chưa ở trạng thái Running. Đây là tình trạng bình thường trong quá trình khởi động Cluster và sẽ được tự giải quyết trong giây lát. Để có thêm thông tin chi tiết về trạng thái của Cluster, minikube cung cấp một package Kubernetes Dashboard, cho phép ta dễ dàng làm quen, tiếp cận với môi trường mới của mình:
 
 ![](images/lab1_3.png)
 
-### Step 4 - Deploy Containers
+## Step 4 - Deploy Containers
+Tạo một Depoloyment và hiển thị nó trên Port 8080:
+`kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4` , sau đó chạy lệnh `kubectl expose deployment hello-minikube --type=NodePort --port=8080`
+Đợi xíu cho tới khi tạo deployment xong, ta sử dụng lệnh `kubectl get services hello-minikube
+` để truy cập đến service để minikube tự khởi chạy ứng dụng trên trình duyệt mặc định:
+
 ![](images/lab1_4.png)
 
+Sử dụng kubectl để chuyển tiếp cổng: `kubectl port-forward service/hello-minikube 7080:8080`.  Ứng dụng đã có thể chạy trên cổng 7080 như bên dưới:
+
 ![](images/lab1_5.png)
+
+Để truy cập LoadBalancer deployment ta sử dụng lệnh “minikube tunel”. Đây là một ví dụ:
+
+`kubectl create deployment balanced --image=k8s.gcr.io/echoserver:1.4`
+
+`kubectl expose deployment balanced --type=LoadBalancer --port=8080`
+
+Mở một cửa sổ mới và chạy câu lệnh `minikube tunel` để tạo một IP có thể định tuyến cho việc LoadBalancer deployment:
+
+
+![](images/lab1_6.png)
+
+Để tìm IP có thể định tuyến ta chạy lệnh `kubectl get services balanced` và xem ở cột EXTERNAL-IP:
+
+
+![](images/lab1_7.png)
+
+Ứng dụng bây giờ đang được triển khai dưới cổng ` <EXTERNAL-IP>:8080`
+
+
+## Manage your cluster
+
+Ta có thể dừng Kubernetes với câu lệnh `minikube stop` và sau đó xóa minikube cluster với câu lệnh `minikube delete`:
 
 
