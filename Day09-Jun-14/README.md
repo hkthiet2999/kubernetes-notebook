@@ -17,11 +17,14 @@ Truy cập tới Cluster vừa tạo: `kubectl get po -A`. Kết quả như sau:
 
 ![](images/lab1_2.png)
 
+
+## Step 3 - Deploy Containers
+
 Ban đầu, một số service chẳng hạn như trình cung cấp bộ nhớ có thể chưa ở trạng thái Running. Đây là tình trạng bình thường trong quá trình khởi động Cluster và sẽ được tự giải quyết trong giây lát. Để có thêm thông tin chi tiết về trạng thái của Cluster, minikube cung cấp một package Kubernetes Dashboard, cho phép ta dễ dàng làm quen, tiếp cận với môi trường mới của mình:
 
 ![](images/lab1_3.png)
 
-## Step 3 - Deploy Containers
+
 Tạo một Depoloyment và hiển thị nó trên Port 8080:
 `kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4` , sau đó chạy lệnh `kubectl expose deployment hello-minikube --type=NodePort --port=8080`
 
