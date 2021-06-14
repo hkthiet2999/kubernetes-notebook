@@ -27,4 +27,8 @@ Ban đầu, một số dịch vụ chẳng hạn như trình cung cấp bộ nh�
 ![](images/lab1_3.png)
 
 ### Step 4 - Deploy Containers
+![](images/lab1_4.png)
+
+![](images/lab1_5.png)
+
 
