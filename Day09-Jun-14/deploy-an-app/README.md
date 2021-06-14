@@ -1,13 +1,6 @@
 # Deploy an app
 
 # Deploy using kubectl
-Bước đầu tiên chúng ta cần khởi chạy một Kubernetes cluster.
-
-Thực hiện lệnh dưới đây để khởi động các thành phần Cluster và tải xuống Kubectl CLI.
-
-minikube start --wait=false
-
-Kiểm tra các Nodes có Ready chưa bằng `kubectl get nodes`
 
 Tạo một Deployment kubernetes-bootcamp
 
@@ -23,11 +16,11 @@ Expose deployment kubernetes-bootcamp kubernetes-bootcamp
 
 ![](images/2.png)
 
-Tạo một deployment mới : http theo các bước của ..., kết quả là:
+Tạo một deployment mới, cc bước thực hiện dựa trên: [Day05-Jun-8/3.Deploy-Containers-Using-Kubectl](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/Day05-Jun-8/3.Deploy-Containers-Using-Kubectl)
 
 ![](images/3.png)
 
-Thử ping thì bị lỗi ntn:
+Thử ping thì bị lỗi 😥
 
 ![](images/err.png)
 
