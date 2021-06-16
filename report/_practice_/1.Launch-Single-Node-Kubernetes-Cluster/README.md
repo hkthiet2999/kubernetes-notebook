@@ -1,5 +1,6 @@
-# Launch Single Node Kubernetes Cluster
+# Chạy Single Node Kubernetes Cluster theo hướng dẫn của Katacode và tự thực hành trên máy
 
+# Thực hành trên katacoda
 ## Step 1 - Khởi động Minikube
 Cài đặt dựa trên hướng dẫn của [minikube](https://minikube.sigs.k8s.io/docs/start/). Do máy mình không đủ dung lượng ổ cứng để cài minikube cùng với các VM tools nên sẽ thực hành trên katacoda.
 
@@ -58,7 +59,7 @@ Sau khi chạy Kubernetes dashboard trên katacoda, URL đến trang dashboard l
    ![](images/kubedashboard.png)
 
 
-# Launch Single Node Kubernetes Cluster - minikube start
+# Thực hành trên máy local
 ## Step 1, 2: Khởi động Minikube và Xem thông tin Kubernetes Cluster
 
 Cài đặt dựa trên hướng dẫn của minikube.
