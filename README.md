@@ -8,4 +8,5 @@ I. Understand the basics concepts
   - [5. Service, Load Balancing và Networking](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_basics%20concepts_/5._services_loadBalancing_networking_)
 
 II. Practice
-  - [1.Khởi động Single Node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/blob/main/report/_practice_/1.Launch-Single-Node-Kubernetes-Cluster)
+  - [1.Chạy Single Node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/blob/main/report/_practice_/1.Launch-Single-Node-Kubernetes-Cluster)
+  - [2.Chạy Multi-node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/diary/Day10-Jun-16/centOS7)
