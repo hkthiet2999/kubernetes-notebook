@@ -9,4 +9,4 @@ I. Understand the basics concepts
 
 II. Practice
   - [1.Chạy Single Node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/blob/main/report/_practice_/1.Launch-Single-Node-Kubernetes-Cluster)
-  - [2.Chạy Multi-node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/diary/Day10-Jun-16/centOS7)
+  - [2.Chạy Multi-node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/2.Launch-a-multi-node-cluster)
