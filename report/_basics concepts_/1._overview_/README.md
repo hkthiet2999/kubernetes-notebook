@@ -1,5 +1,3 @@
-# kubernetes
-
 # I. Understand the basics concepts
 ## 1. Tổng quan về Kubernetes
 
@@ -35,7 +33,7 @@ Các máy worker lưu trữ các Pods như là thành phần của application w
 
 Đây là sơ đồ của một cụm Kubernetes với tất cả các thành phần được gắn với nhau.
 
-![](report/images/components-of-kubernetes.png)
+![](images/components-of-kubernetes.png)
 
 
 Trong sơ đồ trên, các Kubernetes Components có thể chia làm 3 phần chính bao gồm:
@@ -78,36 +76,4 @@ Kubernetes API cho phép bạn truy vấn và thao tác với trạng thái củ
 
 Các đối tượng Kubernetes là các thực thể liên tục trong hệ thống Kubernetes. Kubernetes sử dụng các thực thể này để đại diện cho trạng thái cụm của bạn. 
 
-## 2. Kiến trúc của Cluster
-### 2.1 Nodes
-
-Kubernetes chạy workload bằng cách đặt các containers vào Pod để chạy trên Nodes. Một Node có thể là một máy ảo hoặc máy vật lý, tùy thuộc vào cluster. Mỗi node được quản lý bởi control plane và chứa các service cần thiết để chạy Pod
-
-Các thành phần trên một Node bao gồm kubelet, container runtime và kube-proxy.
-
-### 2.2 Control Plane-Node Communication
-
-### 2.3 Controllers
-
-### 2.4 Cloud Controller Manager
-
-## 3. Containers
-Mỗi container mà khi đã chạy đều có thể lặp lại nhờ tiêu chuẩn hóa từ việc bao gồm các dependencies, có nghĩa là ta sẽ có được behavior giống nhau ở bất kỳ nơi nào chạy nó.
-
-Container tách các ứng dụng khỏi cơ sở hạ tầng máy chủ lưu trữ bên dưới. Điều này làm cho việc triển khai dễ dàng hơn trong các môi trường đám mây hoặc hệ điều hành khác nhau.
-
-### 3.1 Container images
-Container images là một gói phần mềm có thể chạy ở mọi nơi, nó chứa mọi thứ cần thiết để chạy một ứng dụng: code và bất kỳ runtime nào mà ứng dụng cần, các thư viện ứng dụng và hệ thống cũng như các giá trị mặc định cho bất kỳ cài đặt thiết yếu nào.
-
-Theo thiết kế, container là bất biến: ta không thể thay đổi mã của container đang chạy. Nếu ta có một ứng dụng được chứa trong container và muốn thực hiện thay đổi, khi đó ta cần tạo một Image mới bao gồm các thay đổi đó, sau đó tạo lại container để bắt đầu từ container image đã cập nhật.
-
-### 3.2 Container runtimes
-Container runtimes là môi trường chịu trách nhiệm chạy các Containers. Kubernetes hỗ trợ một số container runtime như: Docker, containerd, CRI-O và bất kỳ triển khai nào của Kubernetes CRI (Container Runtime Interface).
-
-## 4. Workloads
-
-## 5. Service, Load Balancing và Networking
- 
-
-# II. Practice
 
