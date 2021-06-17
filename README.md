@@ -12,6 +12,8 @@
   - [2. Chạy Multi-node trên Kubernetes Cluster](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/2.Launch-a-multi-node-cluster)
   - [3. Horizontal Pod Autoscaler](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/3.HPA)
   - [4. Định nghĩa Pod và Service trên Kubernetes sử dụng manifest yaml](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/4.Pod-Service)
+  - [5. ReplicaSet](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/5.ReplicaSet)
+  - [6. Deployment](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/6.Deployment)
 
 [**III. Nhật ký**](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/diary)
 
