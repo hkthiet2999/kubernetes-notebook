@@ -1,9 +1,7 @@
 # Deployment
-Deployment quản lý một nhóm các Pod - các Pod được nhân bản, nó tự động thay thế các Pod bị lỗi, không phản hồi bằng pod mới nó tạo ra. Như vậy, deployment đảm bảo ứng dụng của bạn có một (hay nhiều) Pod để phục vụ các yêu cầu.
-
-Deployment sử dụng mẫu Pod (Pod template - chứa định nghĩa / thiết lập về Pod) để tạo các Pod (các nhân bản replica), khi template này thay đổi, các Pod mới sẽ được tạo để thay thế Pod cũ ngay lập tức.
-
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) cung cấp các bản cập nhật khai báo cho Pods và ReplicaSets. Ta mô tả một desired state trong Deployment và Deployment Controller thay đổi actual state thành desired state mà mình mong muốn với tốc độ kiểm soát được. Ta cũng có thể định nghĩa các Deployment để tạo các ReplicaSets mới hoặc để xóa các Deployment hiện có và sử dụng tất cả các tài nguyên của chúng cho Deployment mới.
+
+Nói dễ hiểu hơn thì Deployment quản lý một nhóm các Pod - các Pod được nhân bản, nó tự động thay thế các Pod bị lỗi, không phản hồi bằng pod mới nó tạo ra. Như vậy, deployment đảm bảo ứng dụng của bạn có một (hay nhiều) Pod để phục vụ các yêu cầu. Deployment sử dụng mẫu Pod (Pod template - chứa định nghĩa / thiết lập về Pod) để tạo các Pod (các nhân bản replica), khi template này thay đổi, các Pod mới sẽ được tạo để thay thế Pod cũ ngay lập tức.
 
 Dưới đây là các trường hợp sử dụng điển hình cho Deployment:
 
@@ -46,7 +44,7 @@ Pod Template:
   Volumes:        <none>
 ```
 
-Cũng tương tự như bài thực hành với ReplicaSet, đang có 2 Pods giờ mình thử delete 1 Pods có name là `nginxdeploy-66b6c48dd5-6mnv8`, kết quả như sau:
+Cũng tương tự như bài thực hành với [ReplicaSet](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/report/_practice_/5.ReplicaSet), đang có 2 Pods giờ mình thử delete 1 Pods có name là `nginxdeploy-66b6c48dd5-6mnv8`, kết quả như sau:
 
 ![](images/2.png)
 
