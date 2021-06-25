@@ -11,12 +11,12 @@
 
 `docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent`
 
-Kết quả:
+### Kết quả:
 
 ![](images/1.png)
 
 
-Build and run [NodeJS app](https://github.com/smoothkt4951/KT-Ecommerce/tree/main/backend) trên Docker Container và quản lý trên Portainer:
+### Build and run [NodeJS app](https://github.com/smoothkt4951/KT-Ecommerce/tree/main/backend) trên Docker Container và quản lý trên Portainer:
 
 Giao diện Dashboard:
 
@@ -31,4 +31,21 @@ Giao diện quản lý các Container
 _Xem thêm chi tiết và hướng dẫn tại [Advanced Options](https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/)
 _
 
+### Build Docker Image latest version, bổ sung Swagger API Documents:
 
+![](images/4.png)
+
+Docker image `backend_app:latest` chạy 2 Container `mongo` và `server`
+
+![](images/5.png)
+
+![](images/7.png)
+
+Thử chạy Swagger API Documents trên Docker local:
+
+![](images/6.png)
+
+![](images/regis.png)
+
+
+![](images/log.png)
