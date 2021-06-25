@@ -1,5 +1,5 @@
 # Sử dụng Portainer để quản lý Docker
-Setup Portainer:
+### Setup Portainer:
 
 - Portainer Server Deployment:
 
@@ -23,11 +23,12 @@ Giao diện Dashboard:
 ![](images/2.png)
 
 Giao diện quản lý các Container
+
 ![](images/33.png)
 
 ![](images/3.png)
 
-Xem thêm chi tiết và hướng dẫn tại [Advanced Options](https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/)
-
+_Xem thêm chi tiết và hướng dẫn tại [Advanced Options](https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/)
+_
 
 
