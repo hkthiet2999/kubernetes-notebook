@@ -2,7 +2,7 @@
 Link project tại: [KT-Ecommerce](https://github.com/smoothkt4951/KT-Ecommerce/tree/main/backend).
 ### Các bước thực hiện:
 
-**1. Tạo Dockerfile và docker-compose.yml. Sau đó chạy lệnh `docker-compose -up` tại thư mục `backend`.**
+**1. Tạo Dockerfile và docker-compose.yml. Sau đó chạy lệnh `docker-compose up` tại thư mục `backend`.**
 
 ![](images/1.png)
 
