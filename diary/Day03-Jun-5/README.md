@@ -1,4 +1,4 @@
-# Các bước thực hiện
+# Django in Container
 1. Create a project environment for the Django
 2. Create the Django project
 3. Create a Django app
