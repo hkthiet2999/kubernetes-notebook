@@ -12,11 +12,11 @@ by Google Cloud
 - Understand the components that are used to manage Kubernetes workloads
 
 ## Content 
-- Module 1: Introduction to Google Cloud
+- Module 1: [Introduction to Google Cloud](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/learn.google-kubernetes-engine/module1)
 
-- Module 2: Introduction to Containers and Kubernetes
+- Module 2: [Introduction to Containers and Kubernetes](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/learn.google-kubernetes-engine/module2)
 
-- Module 3: Kubernetes Architecture
+- Module 3: [Kubernetes Architecture](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/learn.google-kubernetes-engine/module3)
 
-- Module 4: Introduction to Kubernetes Workloads
+- Module 4: [Introduction to Kubernetes Workloads](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/learn.google-kubernetes-engine/module4)
 
