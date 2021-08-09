@@ -17,3 +17,5 @@
 
 [**III. Nhật ký**](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/diary)
 
+[**IV. Khóa học _Getting Started with Google Kubernetes Engine_**](https://github.com/smoothkt4951/kubernetes-notebook/tree/main/learn.google-kubernetes-engine)
+
